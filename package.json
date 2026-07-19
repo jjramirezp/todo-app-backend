@@ -4,8 +4,8 @@
   "main": "index.js",
  "scripts": {
   "dev": "nodemon index.js",
-  "start": "node index.js",
-  "build": "npx prisma generate && npx prisma migrate deploy",
+  "start": "npx prisma migrate deploy && node index.js",
+  "build": "npx prisma generate",
   "test": "cross-env NODE_ENV=test dotenv -e .env.test -- jest --runInBand"
 },
   "keywords": [],
