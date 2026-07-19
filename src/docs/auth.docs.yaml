@@ -1,0 +1,45 @@
+/auth/register:
+  post:
+    summary: Registrar un nuevo usuario
+    tags: [Auth]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [email, password]
+            properties:
+              email:
+                type: string
+                example: usuario@test.com
+              password:
+                type: string
+                example: "123456"
+    responses:
+      201:
+        description: Usuario creado exitosamente
+      409:
+        description: El email ya está registrado
+
+/auth/login:
+  post:
+    summary: Iniciar sesión
+    tags: [Auth]
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [email, password]
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+    responses:
+      200:
+        description: Login exitoso, devuelve el token JWT
+      401:
+        description: Credenciales inválidas
